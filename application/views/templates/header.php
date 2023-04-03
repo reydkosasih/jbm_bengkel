@@ -23,13 +23,16 @@
     <!-- Volt CSS -->
     <link type="text/css" href="<?= base_url('tempset/') ?>css/volt.css" rel="stylesheet">
     <!-- Custom Link -->
-    <link href="<?= base_url('tempset/'); ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('tempset/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('tempset/') ?>vendor/DataTables/datatables.min.css" rel="stylesheet" />
+
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     <!-- Core -->
     <script src="<?= base_url('tempset/') ?>vendor/@popperjs/core/dist/umd/popper.min.js"></script>
     <script src="<?= base_url('tempset/') ?>vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Vendor JS -->
     <script src="<?= base_url('tempset/') ?>vendor/onscreen/dist/on-screen.umd.min.js"></script>
+    <script src="<?= base_url('tempset/') ?>jquery-3.6.4.min.js"></script>
     <!-- Slider -->
     <script src="<?= base_url('tempset/') ?>vendor/nouislider/distribute/nouislider.min.js"></script>
     <!-- Smooth scroll -->
@@ -49,6 +52,8 @@
     <script src="<?= base_url('tempset/') ?>vendor/notyf/notyf.min.js"></script>
     <!-- Simplebar -->
     <script src="<?= base_url('tempset/') ?>vendor/simplebar/dist/simplebar.min.js"></script>
+    <!-- Datatables -->
+    <script src="<?= base_url('tempset/') ?>vendor/DataTables/datatables.min.js"></script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 

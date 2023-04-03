@@ -154,22 +154,3 @@
         </div>
     </div>
 </div>
-<div class="theme-settings card bg-gray-800 pt-2 collapse" id="theme-settings">
-    <div class="card-body bg-gray-800 text-white pt-4">
-        <button type="button" class="btn-close theme-settings-close" aria-label="Close" data-bs-toggle="collapse" href="#theme-settings" role="button" aria-expanded="false" aria-controls="theme-settings"></button>
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <p class="m-0 mb-1 me-4 fs-7">Open source <span role="img" aria-label="gratitude">💛</span></p>
-            <a class="github-button" href="https://github.com/reydkosasih/jbm_bengkel" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star reydkosasih/jbm_bengkel on GitHub">Star</a>
-        </div>
-    </div>
-</div>
-
-<div class="card theme-settings bg-gray-800 theme-settings-expand" id="theme-settings-expand">
-    <div class="card-body bg-gray-800 text-white rounded-top p-3 py-2">
-        <span class="fw-bold d-inline-flex align-items-center h6">
-            <i class="fas fa-cog fa-spin me-2" fill="currentColor" viewBox="0 0 20 20">
-            </i>
-            Settings
-        </span>
-    </div>
-</div>
