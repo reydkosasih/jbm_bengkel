@@ -6,11 +6,15 @@ class Sparepart extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        if ($this->session->userdata('username') == false) {
+            redirect('auth');
+        }
         $this->load->model("sparepart_model");
     }
 
     public function index()
     {
+        $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Kelola Sparepart - JBM';
         $data['datpart'] = $this->sparepart_model->show_sparepart();
 
