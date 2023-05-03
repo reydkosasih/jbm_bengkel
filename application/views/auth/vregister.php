@@ -26,7 +26,7 @@
             <div class="card-body">
               <!-- <button class="btn btn-primary" style="float: right;">test</button> -->
               <div class="brand-wrapper">
-                <img src="<?= base_url('assets') ?>/img/logofsi2.png" alt="logo" width="150px">
+                <img src="<?= base_url('assets') ?>/img/loginlogo.png" alt="logo" width="260px">
               </div>
               <p class="login-card-description">Sign up new account</p>
 
@@ -54,9 +54,7 @@
                 <button type="submit" class="btn btn-block login-btn mb-4">
                   Register
                 </button>
-                <p class="login-card-footer-text">Already have an account? <a href="<?= site_url('auth') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Login
-                    here</a>
-                </p>
+                <!-- <p class="login-card-footer-text">Already have an account? <a href="<?= site_url('auth') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Login here</a></p> -->
               </form>
               <!-- <a href="#!" class="forgot-password-link">Forgot password?</a> -->
               <!-- <nav class="login-card-footer-nav">

@@ -16,17 +16,17 @@
                 </div>
                 <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
                     <li class="nav-item me-2">
-                        <a href="<?= base_url('tempset/') ?>pages/dashboard/dashboard.html" class="nav-link">Dashboard</a>
+                        <a href="<?= site_url('user') ?>" class="nav-link">Dashboard</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a href="<?= base_url('tempset/') ?>pages/examples/sign-in.html" class="nav-link">Login</a>
+                        <a href="<?= site_url('auth') ?>" class="nav-link">Login</a>
                     </li>
                     <li class="nav-item me-2">
-                        <a href="<?= base_url('tempset/') ?>pages/examples/sign-up.html" class="nav-link">Register</a>
+                        <a href="<?= site_url('auth/register') ?>" class="nav-link">Register</a>
                     </li>
-                    <li class="nav-item">
+                    <!-- <li class="nav-item">
                         <a href="<?= base_url('tempset/') ?>pages/examples/lock.html" class="nav-link">Lock</a>
-                    </li>
+                    </li> -->
                 </ul>
             </div>
             <div class="d-flex align-items-center ms-auto">

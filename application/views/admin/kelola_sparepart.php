@@ -25,6 +25,7 @@
                             <th>No</th>
                             <th>Action</th>
                             <th>Nama Barang</th>
+                            <th>Stok</th>
                             <th>Tipe Part</th>
                             <th>Harga</th>
                         </tr>
@@ -40,6 +41,7 @@
                                     </a>
                                 </td>
                                 <td><?= $dp->nama_barang ?></td>
+                                <td><?= $dp->stok_barang ?> Pcs</td>
                                 <td><?= $dp->nama_part ?></td>
                                 <td><?= number_format($dp->harga_barang) ?></td>
                             </tr>

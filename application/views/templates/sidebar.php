@@ -32,7 +32,8 @@
                     <span class="mt-1 ms-1 sidebar-text">JBM Admin Panel</span>
                 </a>
             </li>
-            <li class="nav-item active">
+            <!-- <li class="nav-item active"> -->
+            <li class="nav-item">
                 <a href="<?= site_url('admin/index') ?>" class="nav-link">
                     <span class="sidebar-icon">
                         <i class="fas fa-chart-pie icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
@@ -83,14 +84,14 @@
                         $dat = new DateTime('now', new DateTimeZone('Asia/Jakarta'));
                         $date = $dat->format('H');
                         if ($date < 12)
-                            echo "<i class='fa fa-sun' aria-hidden='true'></i> Selamat Pagi! ";
+                            echo "<i class='fa fa-sun' aria-hidden='true'></i> Selamat Pagi, ";
                         else if ($date < 17)
-                            echo "<i class='fa fa-cloud-sun' aria-hidden='true'></i> Selamat Siang! ";
+                            echo "<i class='fa fa-cloud-sun' aria-hidden='true'></i> Selamat Siang, ";
                         else if ($date < 20)
-                            echo "<i class='fa fa-cloud-moon' aria-hidden='true'></i> Selamat Sore! ";
+                            echo "<i class='fa fa-cloud-moon' aria-hidden='true'></i> Selamat Sore, ";
                         else
-                            echo "<i class='fa fa-moon' aria-hidden='true'></i> Selamat Malam! ";
-                        ?>
+                            echo "<i class='fa fa-moon' aria-hidden='true'></i> Selamat Malam, ";
+                        ?> <?= $tbl_user['nickname'] ?>!
                     </h4>
                 </div>
                 <!-- Navbar links -->
@@ -138,9 +139,9 @@
                     <li class="nav-item dropdown ms-lg-3">
                         <a class="nav-link dropdown-toggle pt-1 px-0" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             <div class="media d-flex align-items-center">
-                                <img class="avatar rounded-circle" src="<?= base_url('tempset/') ?>assets/img/team/profile-picture-3.jpg">
+                                <img class="avatar rounded-circle" src="<?= base_url('assets/img/adminpic/') . $tbl_user['image']; ?>" alt="adminprofile">
                                 <div class="media-body ms-2 text-dark align-items-center d-none d-lg-block">
-                                    <span class="mb-0 font-small fw-bold text-gray-900">Bonnie Green</span>
+                                    <span class="mb-0 font-small fw-bold text-gray-900"><?= $tbl_user['nama_lengkap'] ?></span>
                                 </div>
                             </div>
                         </a>
@@ -156,7 +157,7 @@
                                 Settings
                             </a>
                             <div role="separator" class="dropdown-divider my-1"></div>
-                            <a class="dropdown-item d-flex align-items-center" href="#">
+                            <a class="dropdown-item d-flex align-items-center" href="#" onclick="confirmLogout()">
                                 <i class="fas fa-sign-out-alt text-danger me-2" fill="none" stroke="currentColor">
                                 </i>
                                 Logout

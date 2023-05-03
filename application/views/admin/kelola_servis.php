@@ -29,10 +29,13 @@
                         <tr>
                             <th>No</th>
                             <th>Action</th>
+                            <th>Status</th>
                             <th>Nama Customer</th>
                             <th>Plat Nomor</th>
+                            <th>Kendaraan</th>
+                            <th>Warna</th>
                             <th>Jenis Mobil</th>
-                            <th>Tipe</th>
+                            <th>Transmisi</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -41,14 +44,24 @@
                             <tr>
                                 <td><?= $i++ ?></td>
                                 <td>
-                                    <a href="#" class="btn btn-secondary">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
+                                    <div class="dropdown">
+                                        <a href="#" class="btn btn-secondary" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
+                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-check"></i> Konfirmasi</a></li>
+                                            <li><a class="dropdown-item" href="#"><i class="fas fa-print"></i> Cetak invoice</a></li>
+                                        </ul>
+                                    </div>
                                 </td>
+                                <td><span class="btn btn-success btn-sm rounded-pill">Selesai</span></td>
                                 <td><?= $ds->nama_customer ?></td>
                                 <td><?= $ds->plat_no ?></td>
+                                <td><?= $ds->nama_mobil ?></td>
+                                <td><?= $ds->warna_mobil ?></td>
                                 <td><?= $ds->jenis_mobil ?></td>
-                                <td><?= $ds->tipe_mobil ?></td>
+                                <td><?= $ds->transmisi ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>

@@ -25,7 +25,7 @@ class Auth extends CI_controller
     $this->form_validation->set_rules('password', 'Password', 'trim|required');
 
     if ($this->form_validation->run() == false) {
-      $data['title'] = 'Login - Fine Sinter Indonesia';
+      $data['title'] = 'Login Admin - JBM';
       $this->load->view('auth/vlogin', $data);
     } else {
       $this->_login();
@@ -96,7 +96,7 @@ class Auth extends CI_controller
 
 
     if ($this->form_validation->run() == false) {
-      $data['title'] = 'Registration - Fine Sinter Indonesia';
+      $data['title'] = 'Registrasi Akun - JBM';
       $this->load->view('auth/vregister', $data);
     } else {
       $data = [

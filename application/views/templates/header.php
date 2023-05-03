@@ -59,6 +59,15 @@
 
     <!-- Volt JS -->
     <script src="<?= base_url('tempset/') ?>assets/js/volt.js"></script>
+    <script>
+        function confirmLogout() {
+            Swal.fire({
+                title: 'Anda ingin Logout?',
+                showCancelButton: true,
+                confirmButtonText: '<a class="text-white" href="<?= site_url('auth/logout') ?>">Logout</a>'
+            })
+        }
+    </script>
 </head>
 
 <body>

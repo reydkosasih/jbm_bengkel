@@ -25,7 +25,7 @@
           <div class="col-md-7">
             <div class="card-body">
               <div class="brand-wrapper">
-                <img src="<?= base_url('assets') ?>/img/logofsi2.png" alt="logo" width="150px">
+                <img src="<?= base_url('assets') ?>/img/loginlogo.png" alt="logo" width="260px">
               </div>
               <p class="login-card-description">Sign into your account</p>
               <?= $this->session->flashdata('message'); ?>
@@ -44,8 +44,7 @@
                 </div>
                 <button type="submit" class="btn btn-block login-btn mb-4">Login</button>
                 <!-- Register -->
-                <p class="login-card-footer-text">Don't have an account? <br> <a href="<?= site_url('auth/register') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Register Here</a>
-                </p>
+                <!-- <p class="login-card-footer-text">Don't have an account? <br> <a href="<?= site_url('auth/register') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Register Here</a></p> -->
               </form>
               <!-- <a href="#!" class="forgot-password-link">Forgot password?</a> -->
               <!-- <nav class="login-card-footer-nav">
