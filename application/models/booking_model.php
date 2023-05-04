@@ -3,12 +3,24 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Booking_model extends CI_Model
 {
-    function show_userdata($id)
+    public function show_idbook()
+    {
+        $this->db->select('booking_id');
+        $this->db->from('tbl_booking');
+        $this->db->limit(1);
+        $this->db->order_by('booking_id', 'desc');
+        $query = $this->db->get()->row();
+        return $query;
+    }
+
+    public function riwayat_book($id)
     {
         $this->db->select('*');
-        $this->db->from('tbl_user');
-        $this->db->where('id', $id);
-        return $this->db->get()->row();
+        $this->db->from('tbl_booking');
+        $this->db->join('tbl_user', 'tbl_user.id = tbl_booking.customer_id');
+        $this->db->where('tbl_booking.customer_id', $id);
+        $query = $this->db->get()->result();
+        return $query;
     }
 
     function input_booking()
@@ -16,7 +28,6 @@ class Booking_model extends CI_Model
         $this->db->trans_start();
 
         $inbooking = [
-            'booking_id' => $this->input->post('booking_id', true),
             'customer_id' => $this->input->post('customer_id', true),
             'tgl_servis' => $this->input->post('tgl_servis', true),
             'jam_servis' => $this->input->post('jam_servis', true),
@@ -25,7 +36,6 @@ class Booking_model extends CI_Model
             'no_telp' => $this->input->post('no_telp', true),
             'nama_mobil' => $this->input->post('nama_mobil', true),
             'merk_mobil' => $this->input->post('merk_mobil', true),
-            'jenis_mobil' => $this->input->post('jenis_mobil', true),
             'transmisi' => $this->input->post('transmisi', true),
             'plat_no' => $this->input->post('plat_no', true),
             'layanan_servis' => $this->input->post('layanan_servis', true),
@@ -37,5 +47,15 @@ class Booking_model extends CI_Model
             'booking_id' => $this->input->post('booking_id', true),
             'customer_id' => $this->input->post('customer_id', true),
         ];
+        $this->db->insert('tbl_service', $inservis);
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === false) {
+            echo 'gagallll';
+        } else {
+            // echo 'berhasilll WOW';
+            redirect('user');
+        }
     }
 }

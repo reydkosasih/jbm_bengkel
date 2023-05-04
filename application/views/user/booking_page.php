@@ -1,7 +1,7 @@
 <div class="py-4">
     <h5>Booking Servis Kendaraan</h5>
 </div>
-<form action="" method="post">
+<form action="<?= site_url('user/saveBook') ?>" method="post" onsubmit="completeSub()">
     <div class="row">
         <div class="col mb-4">
             <div class="card border-0 shadow">
@@ -16,7 +16,7 @@
                         <div class="col-6">
                             <div class="mb-3">
                                 <label for="">Jam Servis</label>
-                                <select name="jam_sevis" id="jam_servis" class="form-control" required>
+                                <select name="jam_servis" id="jam_servis" class="form-control" required>
                                     <option value="">-- Pilih Jam --</option>
                                     <option value="09:00">09:00</option>
                                     <option value="11:00">11:00</option>
@@ -36,6 +36,7 @@
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <h5 class="card-title">Data Diri</h5>
+                    <input type="text" name="booking_id" value="<?= $idbook->booking_id + 1 ?>">
                     <input type="hidden" name="customer_id" value="<?= $tbl_user['id'] ?>">
                     <div class="mb-3">
                         <label for="">Nama Lengkap</label>
@@ -106,3 +107,12 @@
         </div>
     </div>
 </form>
+<script>
+    var today = new Date().toISOString().split('T')[0];
+    document.getElementsByName("tgl_servis")[0].setAttribute('min', today);
+</script>
+<script>
+    function completeSub() {
+        alert("Berhasil Booking! Silahkan tunggu konfirmasi selanjutnya.");
+    }
+</script>

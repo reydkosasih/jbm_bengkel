@@ -43,7 +43,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="<?= site_url('user/riwayat') ?>" class="nav-link">
+                <a href="<?= site_url('user/riwayat/' . $tbl_user['id']) ?>" class="nav-link">
                     <span class="sidebar-icon">
                         <i class="fas fa-archive icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
                         </i>

@@ -10,6 +10,7 @@ class Sparepart extends CI_Controller
             redirect('auth');
         }
         $this->load->model("sparepart_model");
+        $this->load->library('form_validation');
     }
 
     public function index()

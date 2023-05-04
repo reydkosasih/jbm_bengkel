@@ -10,6 +10,7 @@ class User extends CI_Controller
         if ($this->session->userdata('username') == false) {
             redirect('auth');
         }
+        $this->load->model('booking_model');
         $this->load->library('form_validation');
     }
 
@@ -17,6 +18,7 @@ class User extends CI_Controller
     {
         $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'User Dashboard - JBM';
+        $data['idbook'] = $this->booking_model->show_idbook();
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
@@ -25,15 +27,22 @@ class User extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function riwayat()
+    public function riwayat($id)
     {
         $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Riwayat Servis Mobil - JBM';
+
+        $data['mybook'] = $this->booking_model->riwayat_book($id);
 
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
         $this->load->view('templates/u_sidebar', $data);
         $this->load->view('user/riwayat_page', $data);
         $this->load->view('templates/footer');
+    }
+
+    function saveBook()
+    {
+        $this->booking_model->input_booking();
     }
 }

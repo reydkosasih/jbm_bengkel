@@ -30,11 +30,12 @@
                             <th>No</th>
                             <th>Action</th>
                             <th>Status</th>
+                            <th>Tanggal Servis</th>
+                            <th>Jam Servis</th>
                             <th>Nama Customer</th>
                             <th>Plat Nomor</th>
+                            <th>Merk Mobil</th>
                             <th>Kendaraan</th>
-                            <!-- <th>Warna</th> -->
-                            <th>Jenis Mobil</th>
                             <th>Transmisi</th>
                         </tr>
                     </thead>
@@ -48,19 +49,39 @@
                                         <a href="#" class="btn btn-secondary" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
                                             <i class="fas fa-plus"></i>
                                         </a>
-                                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                            <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fas fa-check"></i> Konfirmasi</a></li>
-                                            <li><a class="dropdown-item" href="#"><i class="fas fa-print"></i> Cetak invoice</a></li>
-                                        </ul>
+                                        <?php if ($ds->status == "Selesai") { ?>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-print"></i> Cetak invoice</a></li>
+                                            </ul>
+                                        <?php } elseif ($ds->status == "Pending") { ?>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-check"></i> Konfirmasi</a></li>
+                                            </ul>
+                                        <?php } else { ?>
+                                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
+                                                <li><a class="dropdown-item" href="#"><i class="fas fa-credit-card"></i> Transaksi</a></li>
+                                            </ul>
+                                        <?php } ?>
                                     </div>
                                 </td>
-                                <td><span class="btn btn-success btn-sm rounded-pill">Selesai</span></td>
+                                <td>
+                                    <?php if ($ds->status == "Selesai") { ?>
+                                        <span class="btn btn-success btn-sm rounded-pill">Selesai</span>
+                                    <?php } elseif ($ds->status == "Pending") { ?>
+                                        <span class="btn btn-danger btn-sm rounded-pill">Pending</span>
+                                    <?php } else { ?>
+                                        <span class="btn btn-secondary btn-sm rounded-pill">Perbaikan</span>
+                                    <?php } ?>
+                                </td>
+                                <td><?= $ds->tgl_servis ?></td>
+                                <td><?= $ds->jam_servis ?></td>
                                 <td><?= $ds->nama_customer ?></td>
                                 <td><?= $ds->plat_no ?></td>
+                                <td><?= $ds->merk_mobil ?></td>
                                 <td><?= $ds->nama_mobil ?></td>
-                                <!-- <td><?= $ds->warna_mobil ?></td> -->
-                                <td><?= $ds->jenis_mobil ?></td>
                                 <td><?= $ds->transmisi ?></td>
                             </tr>
                         <?php } ?>

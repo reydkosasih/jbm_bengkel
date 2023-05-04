@@ -42,10 +42,19 @@
                     <span class="sidebar-text">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
                 <a href="<?= site_url('service/index') ?>" class="nav-link">
                     <span class="sidebar-icon">
                         <i class="fas fa-archive icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                        </i>
+                    </span>
+                    <span class="sidebar-text">Kelola Booking</span>
+                </a>
+            </li> -->
+            <li class="nav-item">
+                <a href="<?= site_url('service/index') ?>" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-cog icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
                         </i>
                     </span>
                     <span class="sidebar-text">Kelola Service</span>
@@ -60,8 +69,18 @@
                     <span class="sidebar-text">Kelola Sparepart</span>
                 </a>
             </li>
-
             <li role="separator" class="dropdown-divider mt-4 mb-3 border-gray-700"></li>
+
+            <li class="nav-item">
+                <a href="<?= site_url('sparepart/index') ?>" class="nav-link">
+                    <span class="sidebar-icon">
+                        <i class="fas fa-book icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
+                        </i>
+                    </span>
+                    <span class="sidebar-text">Laporan Transaksi</span>
+                </a>
+            </li>
+
             <li class="nav-item">
                 <a href="<?= base_url('tempset/') ?>pages/upgrade-to-pro.html" class="btn btn-secondary d-flex align-items-center justify-content-center btn-upgrade-pro">
                     <span class="sidebar-icon d-inline-flex align-items-center justify-content-center">

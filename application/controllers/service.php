@@ -10,8 +10,10 @@ class Service extends CI_Controller
             redirect('auth');
         }
         $this->load->model("service_model");
+        $this->load->library('form_validation');
     }
 
+    // ADMIN SESSION
     public function index()
     {
         $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
@@ -36,6 +38,36 @@ class Service extends CI_Controller
         $this->load->view('templates/header', $data);
         $this->load->view('templates/navbar', $data);
         $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/detail_servis', $data);
+        $this->load->view('templates/footer');
+    }
+
+    public function konfirmasi_servis($id)
+    {
+        $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Konfirmasi Servis - JBM';
+
+        // View Page
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/konfirmasi_servis', $data);
+        $this->load->view('templates/footer');
+    }
+
+    // END ADMIN SESSION
+
+    // USER SESSION
+    public function detail_service_user($id)
+    {
+        $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Kelola Servis - JBM';
+        $data['datserv'] = $this->service_model->show_service_detail($id);
+
+        // View Page
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('templates/u_sidebar', $data);
         $this->load->view('admin/detail_servis', $data);
         $this->load->view('templates/footer');
     }
