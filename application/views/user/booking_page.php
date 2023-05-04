@@ -36,17 +36,18 @@
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <h5 class="card-title">Data Diri</h5>
+                    <input type="hidden" name="customer_id" value="<?= $tbl_user['id'] ?>">
                     <div class="mb-3">
                         <label for="">Nama Lengkap</label>
-                        <input type="text" class="form-control" name="nama_customer" placeholder="Silahkan Isi Nama Anda" required>
+                        <input type="text" class="form-control" name="nama_customer" placeholder="Silahkan Isi Nama Anda" value="<?= $tbl_user['nama_lengkap'] ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Email</label>
-                        <input type="email" class="form-control" name="email_customer" placeholder="name@example.com" required>
+                        <input type="email" class="form-control" name="email_customer" placeholder="name@example.com" value="<?= $tbl_user['email'] ?>" required>
                     </div>
                     <div class="mb-3">
                         <label for="">Nomor Telepon</label>
-                        <input type="text" class="form-control" name="no_telp" placeholder="08xxxxxxxxxx" required>
+                        <input type="text" class="form-control" name="no_telp" placeholder="08xxxxxxxxxx" value="<?= $tbl_user['no_telp'] ?>" required>
                     </div>
                 </div>
             </div>

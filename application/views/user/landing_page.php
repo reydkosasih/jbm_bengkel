@@ -46,19 +46,13 @@
         <div class="container">
             <div class="row">
                 <div class="col-12 text-center">
-
                     <h1 class="fw-bolder">Jaya Battery Motor</h1>
-                    <h2 class="lead fw-normal text-muted mb-5">Jasa Service dan Jual - Beli Sparepart</h2>
+                    <h2 class="lead fw-normal text-muted mb-5">Jasa Service dan Jual Sparepart</h2>
                     <!-- Button Modal -->
                     <div class="d-flex align-items-center justify-content-center mb-5">
-                        <a href="<?= base_url('tempset/') ?>pages/dashboard/dashboard.html" class="btn btn-secondary d-inline-flex align-items-center me-4">
-                            <svg class="icon icon-xs me-2" fill="currentColor" viewBox="0 0 20 20">
-                            </svg>
-                            Dashboard Demo
+                        <a href="<?= site_url('user') ?>" class="btn btn-secondary d-inline-flex align-items-center me-4">
+                            Booking Sekarang!
                         </a>
-                        <div class="mb-lg-0 mt-1">
-                            <a class="github-button" href="https://github.com/themesberg/volt-bootstrap-5-dashboard" data-color-scheme="no-preference: dark; light: light; dark: light;" data-icon="octicon-star" data-size="large" data-show-count="true" aria-label="Star themesberg/volt-bootstrap-5-dashboard on GitHub">Star</a>
-                        </div>
                     </div>
                     <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
                         <a href="https://themesberg.com" target="_blank">

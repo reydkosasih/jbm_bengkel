@@ -33,7 +33,7 @@
                             <th>Nama Customer</th>
                             <th>Plat Nomor</th>
                             <th>Kendaraan</th>
-                            <th>Warna</th>
+                            <!-- <th>Warna</th> -->
                             <th>Jenis Mobil</th>
                             <th>Transmisi</th>
                         </tr>
@@ -59,7 +59,7 @@
                                 <td><?= $ds->nama_customer ?></td>
                                 <td><?= $ds->plat_no ?></td>
                                 <td><?= $ds->nama_mobil ?></td>
-                                <td><?= $ds->warna_mobil ?></td>
+                                <!-- <td><?= $ds->warna_mobil ?></td> -->
                                 <td><?= $ds->jenis_mobil ?></td>
                                 <td><?= $ds->transmisi ?></td>
                             </tr>
