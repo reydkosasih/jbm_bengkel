@@ -42,7 +42,7 @@ class Service extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function konfirmasi_servis($id)
+    public function konfirmasi_service($id)
     {
         $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
         $data['title'] = 'Konfirmasi Servis - JBM';
@@ -54,6 +54,63 @@ class Service extends CI_Controller
         $this->load->view('admin/konfirmasi_servis', $data);
         $this->load->view('templates/footer');
     }
+
+    // testing
+    public function simpan_penjualan()
+    {
+        $kode_penjualan = $this->input->post('kode_penjualan');
+        $total_harga = $this->input->post('total_harga');
+        $tgl_penjualan = $this->input->post('tgl_penjualan');
+        // $pelanggan = $this->input->post('pelanggan');
+
+        foreach ($this->cart->contents() as $items) {
+            $kode_barang = $items['id'];
+            $qty = $items['qty'];
+            $d = array(
+                'kode_transaksi' => $kode_penjualan,
+                'kode_barang' => $kode_barang,
+                'qty' => $qty,
+            );
+            $this->db->insert('detail_transaksi', $d);
+            //$this->db->query("UPDATE menu SET satuan=satuan-'$qty' WHERE kode_menu='$kode_barang'");
+        }
+
+        $data = array(
+            //'nama_pelanggan' => $pelanggan,
+            'kode_transaksi' => $kode_penjualan,
+            'total_harga' => $total_harga,
+            'tgl_transaksi' => $tgl_penjualan,
+        );
+        $this->db->insert('transaksi', $data);
+        $this->cart->destroy();
+        redirect('service/detail_service');
+    }
+
+    public function simpan_cart()
+    {
+
+        $data = array(
+            'id'    => $this->input->post('kode_barang'),
+            'qty'   => $this->input->post('jumlah'),
+            'price' => $this->input->post('harga'),
+            'name'  => $this->input->post('nabar'),
+        );
+        $this->cart->insert($data);
+        redirect('service/tambah_penjualan');
+    }
+
+    public function hapus_cart($id)
+    {
+
+        $data = array(
+            'rowid'    => $id,
+            'qty'   => 0,
+        );
+        $this->cart->update($data);
+        redirect('service/tambah_penjualan');
+    }
+
+    //testing
 
     // END ADMIN SESSION
 

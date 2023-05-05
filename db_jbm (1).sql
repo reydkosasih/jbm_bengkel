@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 03, 2023 at 11:09 AM
+-- Generation Time: May 05, 2023 at 03:00 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -24,11 +24,38 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `barang`
+--
+
+CREATE TABLE `barang` (
+  `id_barang` int(11) NOT NULL,
+  `kode_barang` varchar(10) DEFAULT NULL,
+  `nama_barang` varchar(50) DEFAULT NULL,
+  `harga` int(11) DEFAULT NULL,
+  `stok` int(5) DEFAULT NULL,
+  `foto_barang` varchar(100) DEFAULT NULL,
+  `id_jenis` int(11) DEFAULT NULL,
+  `id_merk` int(11) DEFAULT NULL,
+  `kode_supplier` varchar(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+
+--
+-- Dumping data for table `barang`
+--
+
+INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `harga`, `stok`, `foto_barang`, `id_jenis`, `id_merk`, `kode_supplier`) VALUES
+(3, 'BRG0003', 'Knalpot', 500000, 4, 'barang_1526268446.jpg', 1, 1, 'sp002'),
+(4, 'BRG0004', 'Ban Dalam', 50000, 3, 'barang_1603700071', 1, 1, 'sp002'),
+(5, 'BRG0005', 'Oli Mesin', 50000, 12, 'barang_1603705795', 1, 1, 'sp001');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `tbl_booking`
 --
 
 CREATE TABLE `tbl_booking` (
-  `booking_id` varchar(20) NOT NULL,
+  `booking_id` int(20) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `tgl_servis` varchar(20) NOT NULL,
   `jam_servis` varchar(11) NOT NULL,
@@ -42,15 +69,17 @@ CREATE TABLE `tbl_booking` (
   `tahun_keluar` varchar(11) NOT NULL,
   `plat_no` varchar(15) NOT NULL,
   `layanan_servis` varchar(50) NOT NULL,
-  `keluhan` varchar(255) NOT NULL
+  `keluhan` varchar(255) NOT NULL,
+  `status` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `tgl_servis`, `jam_servis`, `email_customer`, `nama_customer`, `no_telp`, `nama_mobil`, `merk_mobil`, `jenis_mobil`, `transmisi`, `tahun_keluar`, `plat_no`, `layanan_servis`, `keluhan`) VALUES
-('BOK-001', 17, '', '', '', 'Razor', '081122334455', 'Avanza', 'Toyota', 'Mini Van', 'MT / Manual', '2012', 'N 111 GA', '', '');
+INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `tgl_servis`, `jam_servis`, `email_customer`, `nama_customer`, `no_telp`, `nama_mobil`, `merk_mobil`, `jenis_mobil`, `transmisi`, `tahun_keluar`, `plat_no`, `layanan_servis`, `keluhan`, `status`) VALUES
+(1, 17, '', '', '', 'Razor', '081122334455', 'Avanza', 'Toyota', 'Mini Van', 'MT / Manual', '2012', 'N 111 GA', '', '', ''),
+(3, 18, '2023-05-04', '11:00', 'rey@email.com', 'Rey Dwi Kosasih', '081234567891', 'Ayla', 'Toyota', '', 'AT / Automatic', '', 'T 1001 NE', '10.000 KM / 6 Bulan', 'Ac rusak', 'Pending');
 
 -- --------------------------------------------------------
 
@@ -82,9 +111,10 @@ INSERT INTO `tbl_kendaraan` (`kendaraan_id`, `merk_mobil`, `nama_mobil`, `jenis_
 --
 
 CREATE TABLE `tbl_service` (
-  `servis_id` varchar(20) NOT NULL,
-  `booking_id` varchar(20) NOT NULL,
-  `customer_id` varchar(10) NOT NULL,
+  `servis_id` int(11) NOT NULL,
+  `booking_id` int(20) NOT NULL,
+  `customer_id` int(10) NOT NULL,
+  `email_customer` varchar(50) NOT NULL,
   `nama_customer` varchar(50) NOT NULL,
   `plat_no` varchar(20) NOT NULL,
   `jenis_mobil` varchar(50) NOT NULL,
@@ -95,8 +125,9 @@ CREATE TABLE `tbl_service` (
 -- Dumping data for table `tbl_service`
 --
 
-INSERT INTO `tbl_service` (`servis_id`, `booking_id`, `customer_id`, `nama_customer`, `plat_no`, `jenis_mobil`, `tipe_mobil`) VALUES
-('SRV-001', '', 'CUS-001', 'Rey', 'T 1234 RDK', 'BMW M3 GTR', 'AT');
+INSERT INTO `tbl_service` (`servis_id`, `booking_id`, `customer_id`, `email_customer`, `nama_customer`, `plat_no`, `jenis_mobil`, `tipe_mobil`) VALUES
+(1, 0, 0, '', 'Rey', 'T 1234 RDK', 'BMW M3 GTR', 'AT'),
+(2, 3, 18, '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -105,7 +136,7 @@ INSERT INTO `tbl_service` (`servis_id`, `booking_id`, `customer_id`, `nama_custo
 --
 
 CREATE TABLE `tbl_sparepart` (
-  `sparepart_id` varchar(20) NOT NULL,
+  `sparepart_id` int(20) NOT NULL,
   `nama_barang` varchar(50) NOT NULL,
   `nama_part` varchar(50) NOT NULL,
   `harga_barang` int(25) NOT NULL,
@@ -117,7 +148,21 @@ CREATE TABLE `tbl_sparepart` (
 --
 
 INSERT INTO `tbl_sparepart` (`sparepart_id`, `nama_barang`, `nama_part`, `harga_barang`, `stok_barang`) VALUES
-('BRG-001', 'CASTROL MAGNATEC', 'OLI', 25000, 5);
+(1, 'CASTROL MAGNATEC', 'OLI', 25000, 5);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `tbl_transaksi`
+--
+
+CREATE TABLE `tbl_transaksi` (
+  `transaksi_id` int(11) NOT NULL,
+  `servis_id` int(11) NOT NULL,
+  `booking_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL,
+  `total_harga` int(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -130,10 +175,11 @@ CREATE TABLE `tbl_user` (
   `nama_lengkap` varchar(50) NOT NULL,
   `nickname` varchar(20) NOT NULL,
   `username` varchar(10) NOT NULL,
+  `email` varchar(50) NOT NULL,
   `image` varchar(128) NOT NULL,
   `password` varchar(255) NOT NULL,
   `birthday` varchar(20) NOT NULL,
-  `telepon` varchar(20) NOT NULL,
+  `no_telp` varchar(20) NOT NULL,
   `gender` varchar(20) NOT NULL,
   `role_id` int(11) NOT NULL,
   `is_active` int(1) NOT NULL,
@@ -144,10 +190,11 @@ CREATE TABLE `tbl_user` (
 -- Dumping data for table `tbl_user`
 --
 
-INSERT INTO `tbl_user` (`id`, `nama_lengkap`, `nickname`, `username`, `image`, `password`, `birthday`, `telepon`, `gender`, `role_id`, `is_active`, `date_created`) VALUES
-(9, 'Administrator', 'Admin', 'admintest', 'martinnnn.jpg', '$2y$10$b8MPOsqU4Zl70Ker3Uc3q.PZN.3GbANN8Gl2moYhHh6.xPc62UHN6', '2022-08-01', '112233445566', 'Male', 1, 1, 1660057679),
-(11, 'Rey Dwi Kosasih', 'Rey', 'reyitdies', 'author-image.jpg', '$2y$10$SBBc4ffXFbHuETCkSP7w9O45H6HLM8iVMZr9nCwT4puGM/FLeZ0qi', '2001-12-17', '085211223161', 'Male', 1, 1, 1660871372),
-(17, 'Coklat Enak', 'Coklat', 'choco', 'default.jpg', '$2y$10$8l9WCDA4hA.CGaut5kBts.9bMz/6vzC1kC2/TeYWLTRm4LF6G4PqW', '', '', '', 2, 1, 1678242234);
+INSERT INTO `tbl_user` (`id`, `nama_lengkap`, `nickname`, `username`, `email`, `image`, `password`, `birthday`, `no_telp`, `gender`, `role_id`, `is_active`, `date_created`) VALUES
+(9, 'Administrator', 'Admin', 'admintest', '', 'martinnnn.jpg', '$2y$10$b8MPOsqU4Zl70Ker3Uc3q.PZN.3GbANN8Gl2moYhHh6.xPc62UHN6', '2022-08-01', '112233445566', 'Male', 1, 1, 1660057679),
+(11, 'Rey Dwi Kosasih', 'Rey', 'reyitdies', '', 'author-image.jpg', '$2y$10$SBBc4ffXFbHuETCkSP7w9O45H6HLM8iVMZr9nCwT4puGM/FLeZ0qi', '2001-12-17', '085211223161', 'Male', 1, 1, 1660871372),
+(17, 'Coklat Enak', 'Coklat', 'choco', '', 'default.jpg', '$2y$10$8l9WCDA4hA.CGaut5kBts.9bMz/6vzC1kC2/TeYWLTRm4LF6G4PqW', '', '', '', 2, 1, 1678242234),
+(18, 'Rey Dwi Kosasih', 'Rey', 'reydk', 'rey@email.com', 'default.jpg', '$2y$10$au7dJWuHMAQaaRQIqsAbHeg2QyVH2dLdZSDEUjPLwrCkcLaZps6wO', '', '081234567891', '', 2, 1, 1683111129);
 
 -- --------------------------------------------------------
 
@@ -252,6 +299,12 @@ INSERT INTO `user_sub_menu` (`id`, `menu_id`, `title`, `url`, `icon`, `is_active
 --
 
 --
+-- Indexes for table `barang`
+--
+ALTER TABLE `barang`
+  ADD PRIMARY KEY (`id_barang`);
+
+--
 -- Indexes for table `tbl_booking`
 --
 ALTER TABLE `tbl_booking`
@@ -274,6 +327,12 @@ ALTER TABLE `tbl_service`
 --
 ALTER TABLE `tbl_sparepart`
   ADD PRIMARY KEY (`sparepart_id`);
+
+--
+-- Indexes for table `tbl_transaksi`
+--
+ALTER TABLE `tbl_transaksi`
+  ADD PRIMARY KEY (`transaksi_id`);
 
 --
 -- Indexes for table `tbl_user`
@@ -310,10 +369,40 @@ ALTER TABLE `user_sub_menu`
 --
 
 --
+-- AUTO_INCREMENT for table `barang`
+--
+ALTER TABLE `barang`
+  MODIFY `id_barang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tbl_booking`
+--
+ALTER TABLE `tbl_booking`
+  MODIFY `booking_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `tbl_service`
+--
+ALTER TABLE `tbl_service`
+  MODIFY `servis_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `tbl_sparepart`
+--
+ALTER TABLE `tbl_sparepart`
+  MODIFY `sparepart_id` int(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `tbl_transaksi`
+--
+ALTER TABLE `tbl_transaksi`
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT for table `tbl_user`
 --
 ALTER TABLE `tbl_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `user_access_menu`
