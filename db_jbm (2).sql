@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 05, 2023 at 03:00 AM
+-- Generation Time: May 06, 2023 at 03:25 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -44,9 +44,29 @@ CREATE TABLE `barang` (
 --
 
 INSERT INTO `barang` (`id_barang`, `kode_barang`, `nama_barang`, `harga`, `stok`, `foto_barang`, `id_jenis`, `id_merk`, `kode_supplier`) VALUES
-(3, 'BRG0003', 'Knalpot', 500000, 4, 'barang_1526268446.jpg', 1, 1, 'sp002'),
-(4, 'BRG0004', 'Ban Dalam', 50000, 3, 'barang_1603700071', 1, 1, 'sp002'),
+(3, 'BRG0003', 'Knalpot', 500000, 5, 'barang_1526268446.jpg', 1, 1, 'sp002'),
+(4, 'BRG0004', 'Ban Dalam', 50000, 5, 'barang_1603700071', 1, 1, 'sp002'),
 (5, 'BRG0005', 'Oli Mesin', 50000, 12, 'barang_1603705795', 1, 1, 'sp001');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detail_transaksi`
+--
+
+CREATE TABLE `detail_transaksi` (
+  `booking_id` int(11) NOT NULL,
+  `kode_barang` varchar(25) NOT NULL,
+  `qty` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `detail_transaksi`
+--
+
+INSERT INTO `detail_transaksi` (`booking_id`, `kode_barang`, `qty`) VALUES
+(3, 'BRG0003', 1),
+(3, 'BRG0005', 2);
 
 -- --------------------------------------------------------
 
@@ -64,22 +84,21 @@ CREATE TABLE `tbl_booking` (
   `no_telp` varchar(20) NOT NULL,
   `nama_mobil` varchar(30) NOT NULL,
   `merk_mobil` varchar(20) NOT NULL,
-  `jenis_mobil` varchar(20) NOT NULL,
   `transmisi` varchar(30) NOT NULL,
-  `tahun_keluar` varchar(11) NOT NULL,
   `plat_no` varchar(15) NOT NULL,
   `layanan_servis` varchar(50) NOT NULL,
   `keluhan` varchar(255) NOT NULL,
-  `status` varchar(20) NOT NULL
+  `status` varchar(20) NOT NULL,
+  `gambar` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_booking`
 --
 
-INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `tgl_servis`, `jam_servis`, `email_customer`, `nama_customer`, `no_telp`, `nama_mobil`, `merk_mobil`, `jenis_mobil`, `transmisi`, `tahun_keluar`, `plat_no`, `layanan_servis`, `keluhan`, `status`) VALUES
-(1, 17, '', '', '', 'Razor', '081122334455', 'Avanza', 'Toyota', 'Mini Van', 'MT / Manual', '2012', 'N 111 GA', '', '', ''),
-(3, 18, '2023-05-04', '11:00', 'rey@email.com', 'Rey Dwi Kosasih', '081234567891', 'Ayla', 'Toyota', '', 'AT / Automatic', '', 'T 1001 NE', '10.000 KM / 6 Bulan', 'Ac rusak', 'Pending');
+INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `tgl_servis`, `jam_servis`, `email_customer`, `nama_customer`, `no_telp`, `nama_mobil`, `merk_mobil`, `transmisi`, `plat_no`, `layanan_servis`, `keluhan`, `status`, `gambar`) VALUES
+(1, 17, '', '', '', 'Razor', '081122334455', 'Avanza', 'Toyota', 'MT / Manual', 'N 111 GA', '', '', 'Perbaikan', ''),
+(3, 18, '2023-05-04', '11:00', 'rey@email.com', 'Rey Dwi Kosasih', '081234567891', 'Ayla', 'Toyota', 'AT / Automatic', 'T 1001 NE', '10.000 KM / 6 Bulan', 'Ac rusak', 'Perbaikan', 'Picture1.png');
 
 -- --------------------------------------------------------
 
@@ -113,21 +132,16 @@ INSERT INTO `tbl_kendaraan` (`kendaraan_id`, `merk_mobil`, `nama_mobil`, `jenis_
 CREATE TABLE `tbl_service` (
   `servis_id` int(11) NOT NULL,
   `booking_id` int(20) NOT NULL,
-  `customer_id` int(10) NOT NULL,
-  `email_customer` varchar(50) NOT NULL,
-  `nama_customer` varchar(50) NOT NULL,
-  `plat_no` varchar(20) NOT NULL,
-  `jenis_mobil` varchar(50) NOT NULL,
-  `tipe_mobil` varchar(20) NOT NULL
+  `customer_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_service`
 --
 
-INSERT INTO `tbl_service` (`servis_id`, `booking_id`, `customer_id`, `email_customer`, `nama_customer`, `plat_no`, `jenis_mobil`, `tipe_mobil`) VALUES
-(1, 0, 0, '', 'Rey', 'T 1234 RDK', 'BMW M3 GTR', 'AT'),
-(2, 3, 18, '', '', '', '', '');
+INSERT INTO `tbl_service` (`servis_id`, `booking_id`, `customer_id`) VALUES
+(1, 0, 0),
+(2, 3, 18);
 
 -- --------------------------------------------------------
 
@@ -161,8 +175,16 @@ CREATE TABLE `tbl_transaksi` (
   `servis_id` int(11) NOT NULL,
   `booking_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
+  `tgl_transaksi` varchar(20) NOT NULL,
   `total_harga` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `tbl_transaksi`
+--
+
+INSERT INTO `tbl_transaksi` (`transaksi_id`, `servis_id`, `booking_id`, `customer_id`, `tgl_transaksi`, `total_harga`) VALUES
+(11, 0, 3, 18, '2023-05-05', 600000);
 
 -- --------------------------------------------------------
 
@@ -396,7 +418,7 @@ ALTER TABLE `tbl_sparepart`
 -- AUTO_INCREMENT for table `tbl_transaksi`
 --
 ALTER TABLE `tbl_transaksi`
-  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `transaksi_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `tbl_user`

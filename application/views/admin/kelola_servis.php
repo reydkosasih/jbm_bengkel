@@ -57,7 +57,7 @@
                                         <?php } elseif ($ds->status == "Pending") { ?>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-check"></i> Konfirmasi</a></li>
+                                                <li><a class="dropdown-item" href="<?= site_url('service/konfirmasi_service/' . $ds->booking_id) ?>"><i class="fas fa-check"></i> Konfirmasi</a></li>
                                             </ul>
                                         <?php } else { ?>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">

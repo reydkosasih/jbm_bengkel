@@ -25,6 +25,8 @@
     <!-- Custom Link -->
     <link href="<?= base_url('tempset/') ?>vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href="<?= base_url('tempset/') ?>vendor/DataTables/datatables.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="<?= base_url('tempset/') ?>fonts/dropify.ttf">
+    <link rel="stylesheet" href="<?= base_url('tempset/') ?>vendor/dropify/dropify.min.css">
 
     <!-- NOTICE: You can use the _analytics.html partial to include production code specific code & trackers -->
     <!-- Core -->
@@ -54,6 +56,8 @@
     <script src="<?= base_url('tempset/') ?>vendor/simplebar/dist/simplebar.min.js"></script>
     <!-- Datatables -->
     <script src="<?= base_url('tempset/') ?>vendor/DataTables/datatables.min.js"></script>
+    <!-- Dropify -->
+    <script src="<?= base_url('tempset/'); ?>vendor/dropify/dropify.min.js"></script>
     <!-- Github buttons -->
     <script async defer src="https://buttons.github.io/buttons.js"></script>
 

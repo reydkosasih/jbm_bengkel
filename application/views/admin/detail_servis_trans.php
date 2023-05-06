@@ -1,21 +1,4 @@
 <div class="py-4">
-    <!-- <div class="dropdown">
-        <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-plus me-2"></i>Tambah Data
-        </button>
-        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="fas fa-user text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20">
-                </i>
-                Add User
-            </a>
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="fas fa-layer-group text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20">
-                </i>
-                Add Widget
-            </a>
-        </div>
-    </div> -->
     <button onclick="history.back()" class="btn btn-danger"><i class="fas fa-chevron-left"></i></button>
 </div>
 <div class="row">
@@ -80,9 +63,10 @@
                         <thead class="table-dark">
                             <tr>
                                 <th>No</th>
-                                <th>Action</th>
+                                <th>Layanan Servis</th>
                                 <th>Tanggal Transaksi</th>
-                                <th>Total Harga</th>
+                                <th>Qty</th>
+                                <th>Harga</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -90,18 +74,19 @@
                             <?php foreach ($detailserv as $dt) { ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
-                                    <td>
-                                        <?php if ($tbl_user['role_id'] == 1) { ?>
-                                            <a href="<?= site_url('service/detail_trans/' . $dt->booking_id) ?>" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
-                                        <?php } else { ?>
-                                            <a href="<?= site_url('service/detail_trans_user/' . $dt->booking_id) ?>" class="btn btn-secondary"><i class="fas fa-eye"></i></a>
-                                        <?php } ?>
-                                    </td>
+                                    <td><?= $dt->nama_barang ?></td>
                                     <td><?= $dt->tgl_transaksi ?></td>
-                                    <td>Rp. <?= number_format($dt->total_harga, 2) ?></td>
+                                    <td><?= $dt->qty ?> Pcs</td>
+                                    <td>Rp. <?= number_format($dt->harga * $dt->qty, 2) ?></td>
                                 </tr>
                             <?php } ?>
                         </tbody>
+                        <tfoot class="table-primary">
+                            <tr>
+                                <td colspan="4" style="font-weight: bold; text-align: center;">Total Harga</td>
+                                <td>Rp. <?= number_format($totalhrg->total_harga, 2) ?></td>
+                            </tr>
+                        </tfoot>
                     </table>
                 </div>
             </div>

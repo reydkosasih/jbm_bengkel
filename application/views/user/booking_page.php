@@ -36,7 +36,7 @@
             <div class="card border-0 shadow">
                 <div class="card-body">
                     <h5 class="card-title">Data Diri</h5>
-                    <input type="text" name="booking_id" value="<?= $idbook->booking_id + 1 ?>">
+                    <input type="hidden" name="booking_id" value="<?= $idbook->booking_id + 1 ?>">
                     <input type="hidden" name="customer_id" value="<?= $tbl_user['id'] ?>">
                     <div class="mb-3">
                         <label for="">Nama Lengkap</label>
