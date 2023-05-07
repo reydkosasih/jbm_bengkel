@@ -37,6 +37,7 @@ class Service_model extends CI_Model
         $this->db->where('tbl_transaksi.booking_id', $id);
         return $this->db->get()->result();
     }
+
     public function get_totalharga($id)
     {
         $this->db->select('*');

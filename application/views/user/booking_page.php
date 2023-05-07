@@ -38,6 +38,7 @@
                     <h5 class="card-title">Data Diri</h5>
                     <input type="hidden" name="booking_id" value="<?= $idbook->booking_id + 1 ?>">
                     <input type="hidden" name="customer_id" value="<?= $tbl_user['id'] ?>">
+                    <input type="hidden" name="status" value="Pending">
                     <div class="mb-3">
                         <label for="">Nama Lengkap</label>
                         <input type="text" class="form-control" name="nama_customer" placeholder="Silahkan Isi Nama Anda" value="<?= $tbl_user['nama_lengkap'] ?>" required>

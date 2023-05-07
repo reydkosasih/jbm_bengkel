@@ -29,10 +29,21 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-    public function bayarcash($id)
+    public function cek_pembayaran($id)
     {
-        # code...
+        $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Pembayaran - JBM';
+        $data['datserv'] = $this->service_model->show_service_detail($id);
+        $data['detailserv'] = $this->service_model->transaksi_detail_inside($id);
+        $data['totalhrg'] = $this->service_model->get_totalharga($id);
+
+        $this->load->view('templates/header', $data);
+        $this->load->view('templates/navbar', $data);
+        $this->load->view('templates/sidebar', $data);
+        $this->load->view('admin/bayar_page', $data);
+        $this->load->view('templates/footer');
     }
+
 
     public function transfer($id)
     {

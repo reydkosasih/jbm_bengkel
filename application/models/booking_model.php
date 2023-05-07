@@ -40,6 +40,7 @@ class Booking_model extends CI_Model
             'plat_no' => $this->input->post('plat_no', true),
             'layanan_servis' => $this->input->post('layanan_servis', true),
             'keluhan' => $this->input->post('keluhan', true),
+            'status' => $this->input->post('status', true),
         ];
         $this->db->insert('tbl_booking', $inbooking);
 
