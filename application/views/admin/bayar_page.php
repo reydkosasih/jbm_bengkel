@@ -159,11 +159,7 @@
     });
 </script>
 <script>
-    function infocash() {
-        Swal.fire(
-            'Mau Bayar Cash?',
-            'Silahkan kunjungi kasir untuk melakukan pembayaran.',
-            'info'
-        )
+    function hitung() {
+
     }
 </script>
