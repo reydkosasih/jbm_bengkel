@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 06, 2023 at 03:25 AM
+-- Generation Time: May 09, 2023 at 04:24 AM
 -- Server version: 10.4.27-MariaDB
 -- PHP Version: 7.4.33
 
@@ -98,7 +98,7 @@ CREATE TABLE `tbl_booking` (
 
 INSERT INTO `tbl_booking` (`booking_id`, `customer_id`, `tgl_servis`, `jam_servis`, `email_customer`, `nama_customer`, `no_telp`, `nama_mobil`, `merk_mobil`, `transmisi`, `plat_no`, `layanan_servis`, `keluhan`, `status`, `gambar`) VALUES
 (1, 17, '', '', '', 'Razor', '081122334455', 'Avanza', 'Toyota', 'MT / Manual', 'N 111 GA', '', '', 'Perbaikan', ''),
-(3, 18, '2023-05-04', '11:00', 'rey@email.com', 'Rey Dwi Kosasih', '081234567891', 'Ayla', 'Toyota', 'AT / Automatic', 'T 1001 NE', '10.000 KM / 6 Bulan', 'Ac rusak', 'Perbaikan', 'Picture1.png');
+(3, 18, '2023-05-04', '11:00', 'rey@email.com', 'Rey Dwi Kosasih', '081234567891', 'Ayla', 'Toyota', 'AT / Automatic', 'T 1001 NE', '10.000 KM / 6 Bulan', 'Ac rusak', 'Selesai', 'Picture1.png');
 
 -- --------------------------------------------------------
 
@@ -176,15 +176,17 @@ CREATE TABLE `tbl_transaksi` (
   `booking_id` int(11) NOT NULL,
   `customer_id` int(11) NOT NULL,
   `tgl_transaksi` varchar(20) NOT NULL,
-  `total_harga` int(30) NOT NULL
+  `total_harga` int(30) NOT NULL,
+  `jml_bayar` int(20) NOT NULL,
+  `kembalian` int(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `tbl_transaksi`
 --
 
-INSERT INTO `tbl_transaksi` (`transaksi_id`, `servis_id`, `booking_id`, `customer_id`, `tgl_transaksi`, `total_harga`) VALUES
-(11, 0, 3, 18, '2023-05-05', 600000);
+INSERT INTO `tbl_transaksi` (`transaksi_id`, `servis_id`, `booking_id`, `customer_id`, `tgl_transaksi`, `total_harga`, `jml_bayar`, `kembalian`) VALUES
+(11, 0, 3, 18, '2023-05-05', 600000, 1000000, 400000);
 
 -- --------------------------------------------------------
 
@@ -213,8 +215,8 @@ CREATE TABLE `tbl_user` (
 --
 
 INSERT INTO `tbl_user` (`id`, `nama_lengkap`, `nickname`, `username`, `email`, `image`, `password`, `birthday`, `no_telp`, `gender`, `role_id`, `is_active`, `date_created`) VALUES
-(9, 'Administrator', 'Admin', 'admintest', '', 'martinnnn.jpg', '$2y$10$b8MPOsqU4Zl70Ker3Uc3q.PZN.3GbANN8Gl2moYhHh6.xPc62UHN6', '2022-08-01', '112233445566', 'Male', 1, 1, 1660057679),
-(11, 'Rey Dwi Kosasih', 'Rey', 'reyitdies', '', 'author-image.jpg', '$2y$10$SBBc4ffXFbHuETCkSP7w9O45H6HLM8iVMZr9nCwT4puGM/FLeZ0qi', '2001-12-17', '085211223161', 'Male', 1, 1, 1660871372),
+(9, 'Administrator', 'Admin', 'admin', '', 'martinnnn.jpg', '$2y$10$b8MPOsqU4Zl70Ker3Uc3q.PZN.3GbANN8Gl2moYhHh6.xPc62UHN6', '2022-08-01', '112233445566', 'Male', 1, 1, 1660057679),
+(11, 'Owner', 'Owner', 'owner', '', 'author-image.jpg', '$2y$10$SBBc4ffXFbHuETCkSP7w9O45H6HLM8iVMZr9nCwT4puGM/FLeZ0qi', '2001-12-17', '085211223161', 'Male', 3, 1, 1660871372),
 (17, 'Coklat Enak', 'Coklat', 'choco', '', 'default.jpg', '$2y$10$8l9WCDA4hA.CGaut5kBts.9bMz/6vzC1kC2/TeYWLTRm4LF6G4PqW', '', '', '', 2, 1, 1678242234),
 (18, 'Rey Dwi Kosasih', 'Rey', 'reydk', 'rey@email.com', 'default.jpg', '$2y$10$au7dJWuHMAQaaRQIqsAbHeg2QyVH2dLdZSDEUjPLwrCkcLaZps6wO', '', '081234567891', '', 2, 1, 1683111129);
 
