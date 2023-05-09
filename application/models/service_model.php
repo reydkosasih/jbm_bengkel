@@ -55,4 +55,32 @@ class Service_model extends CI_Model
         $this->db->where('detail_transaksi.booking_id', $id);
         return $this->db->get()->result();
     }
+
+    function konfir_bayar()
+    {
+        $this->db->trans_start();
+
+        $inbooking = [
+            'booking_id' => $this->input->post('booking_id', true),
+            'status' => $this->input->post('status', true),
+        ];
+        $this->db->update('tbl_booking', $inbooking, array('booking_id' => $inbooking['booking_id']));
+
+        $inservis = [
+            'transaksi_id' => $this->input->post('transaksi_id', true),
+            'booking_id' => $this->input->post('booking_id', true),
+            'jml_bayar' => $this->input->post('jml_bayar', true),
+            'kembalian' => $this->input->post('kembalian', true),
+        ];
+        $this->db->update('tbl_transaksi', $inservis, array('transaksi_id' => $inservis['transaksi_id']));
+
+        $this->db->trans_complete();
+
+        if ($this->db->trans_status() === false) {
+            echo 'gagallll';
+        } else {
+            // echo 'berhasilll WOW';
+            redirect('service');
+        }
+    }
 }

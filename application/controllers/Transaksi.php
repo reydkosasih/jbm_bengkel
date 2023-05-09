@@ -44,7 +44,6 @@ class Transaksi extends CI_Controller
         $this->load->view('templates/footer');
     }
 
-
     public function transfer($id)
     {
         $this->db->trans_start();
@@ -82,5 +81,22 @@ class Transaksi extends CI_Controller
         $this->db->trans_complete();
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Profile successfully updated! </div>');
         redirect('transaksi/pembayaran/' . $booking_id);
+    }
+
+    public function konfirmasi_bayar()
+    {
+        $this->service_model->konfir_bayar();
+    }
+
+    public function cetakinv($id)
+    {
+        $data['tbl_user'] = $this->db->get_where('tbl_user', ['username' => $this->session->userdata('username')])->row_array();
+        $data['title'] = 'Invoice Transaksi';
+
+        $data['datserv'] = $this->service_model->show_service_detail($id);
+        $data['detailserv'] = $this->service_model->transaksi_detail_inside($id);
+        $data['totalhrg'] = $this->service_model->get_totalharga($id);
+
+        $this->load->view('laporan/lap_invoice', $data);
     }
 }

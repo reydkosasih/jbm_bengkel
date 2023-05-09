@@ -53,8 +53,10 @@ class Auth extends CI_controller
           $this->session->set_userdata($data);
           if ($user['role_id'] == 1) {
             redirect('admin');
-          } else {
+          } elseif ($user['role_id'] == 2) {
             redirect('landing');
+          } else {
+            redirect('laporan/transaksi');
           }
         } else {
           # salah password

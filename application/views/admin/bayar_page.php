@@ -63,7 +63,7 @@
                 </div>
                 <div class="col-lg-3">
                     <div class="card border-0 shadow" style="width: 20rem;">
-                        <img src="<?= base_url('assets/img/buktipay/') . $datserv->gambar ?>" width="50%" class="card-img-top" alt="...">
+                        <img src="<?= base_url('assets/img/buktipay/') . $datserv->gambar ?>" width="50%" class="card-img-top" alt="Bukti Pay">
                     </div>
                 </div>
             </div>
@@ -121,25 +121,32 @@
                 <h5 class="modal-title" id="inputBayarLabel">Input Pembayaran</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
-            <div class="modal-body">
-                <div class="mb-4">
+            <form action="<?= site_url('transaksi/konfirmasi_bayar') ?>" method="post" onsubmit="konfirm()">
+                <div class="modal-body">
+                    <input type="hidden" name="transaksi_id" value="<?= $totalhrg->transaksi_id ?>">
+                    <input type="hidden" name="booking_id" value="<?= $datserv->booking_id ?>">
+                    <input type="hidden" name="status" value="Selesai">
                     <label for="">Total Harga</label>
-                    <input class="form-control" type="text" value="<?= number_format($totalhrg->total_harga) ?>" readonly>
-                    <input type="number" id="total" value="<?= $totalhrg->total_harga ?>" readonly>
-                </div>
-                <div class="mb-4">
-                    <label for="">Masukan Nominal:</label>
-                    <input class="form-control" type="number" name="jml_bayar" min="0" placeholder="0" value="">
-                </div>
-                <div class="mb-4">
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Rp.</span>
+                        <input class="form-control" type="text" value="<?= number_format($totalhrg->total_harga) ?>" readonly>
+                        <input type="hidden" id="total" value="<?= $totalhrg->total_harga ?>" readonly>
+                    </div>
+                    <div class="mb-4">
+                        <label for="">Masukan Nominal:</label>
+                        <input class="form-control" type="number" name="jml_bayar" id="jml" min="0" placeholder="0" value="" onclick="hitung()" onkeyup="hitung()">
+                    </div>
                     <label for="">Kembalian</label>
-                    <input class="form-control" type="number" id="kembalian" placeholder="0" value="0" readonly>
+                    <div class="input-group mb-4">
+                        <span class="input-group-text">Rp.</span>
+                        <input class="form-control" type="number" name="kembalian" id="kembalian" placeholder="0" value="0" readonly>
+                    </div>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Simpan Data</button>
-            </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Simpan Data</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -160,6 +167,20 @@
 </script>
 <script>
     function hitung() {
+        var jml = document.getElementById('jml').value;
+        var total = document.getElementById('total').value;
 
+        var kurangi = parseInt(jml) - parseInt(total);
+        document.getElementById('kembalian').value = kurangi;
+    }
+
+    function konfirm() {
+        Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Your work has been saved',
+            showConfirmButton: false,
+            timer: 1500
+        })
     }
 </script>
