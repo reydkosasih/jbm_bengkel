@@ -1,6 +1,6 @@
 <div class="py-4">
     <h5>Laporan Service</h5>
-    <a href="" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
+    <a href="<?= site_url('laporan/cetak_servis') ?>" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
 </div>
 <div class="row">
     <div class="col-lg">

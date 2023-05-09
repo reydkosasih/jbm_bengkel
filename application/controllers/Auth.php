@@ -56,7 +56,7 @@ class Auth extends CI_controller
           } elseif ($user['role_id'] == 2) {
             redirect('landing');
           } else {
-            redirect('laporan/transaksi');
+            redirect('laporan/transaksi_owner');
           }
         } else {
           # salah password

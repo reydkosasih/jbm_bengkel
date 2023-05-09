@@ -1,6 +1,6 @@
 <div class="py-4">
     <h5>Laporan Transaksi</h5>
-    <a href="" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
+    <a href="<?= site_url('laporan/cetak_trans') ?>" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
 </div>
 <div class="row">
     <div class="col-lg">
@@ -28,29 +28,6 @@
                             <?php foreach ($datserv as $ds) { ?>
                                 <tr>
                                     <td><?= $i++ ?></td>
-                                    <!-- <td>
-                                        <div class="dropdown">
-                                            <a href="#" class="btn btn-secondary" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown">
-                                                <i class="fas fa-plus"></i>
-                                            </a>
-                                            <?php if ($ds->status == "Selesai") { ?>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                                    <li><a class="dropdown-item" href="<?= site_url('transaksi/cetakinv/' . $ds->booking_id) ?>"><i class="fas fa-print"></i> Cetak invoice</a></li>
-                                                </ul>
-                                            <?php } elseif ($ds->status == "Pending") { ?>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                                    <li><a class="dropdown-item" href="<?= site_url('service/konfirmasi_service/' . $ds->booking_id) ?>"><i class="fas fa-check"></i> Konfirmasi</a></li>
-                                                </ul>
-                                            <?php } else { ?>
-                                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                                                    <li><a class="dropdown-item" href="<?= site_url('service/detail_service/' . $ds->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                                    <li><a class="dropdown-item" href="<?= site_url('transaksi/cek_pembayaran/' . $ds->booking_id) ?>"><i class="fas fa-credit-card"></i> Cek Pembayaran</a></li>
-                                                </ul>
-                                            <?php } ?>
-                                        </div>
-                                    </td> -->
                                     <td>
                                         <?php if ($ds->status == "Selesai") { ?>
                                             <span class="btn btn-success btn-sm rounded-pill">Selesai</span>

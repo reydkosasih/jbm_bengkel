@@ -10,8 +10,50 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 </head>
 
-<body>
-
+<body onload="window.print()">
+    <center>
+        <img src="<?= base_url('assets') ?>/img/loginlogo.png" alt="logo" width="300px">
+        <p style="font-size: 14px;">Jl. Raya Curug - Kosambi No.48, RT.3/RW.2, Pancawati <br> Kec. Klari, Karawang, Jawa Barat 41371 <br>No. Telp: 0812-8183-671</p>
+    </center>
+    <hr>
+    <h3 style="text-align: center;">Laporan Transaksi</h3>
+    <hr>
+    <table class="table table-bordered" id="dataService">
+        <thead class="table-secondary">
+            <tr>
+                <th>No</th>
+                <!-- <th>Action</th> -->
+                <th>Tanggal Transaksi</th>
+                <th>Nama Customer</th>
+                <th>Total Biaya</th>
+                <th>Jumlah Bayar</th>
+                <th>Kembalian</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            <?php $i = 1 ?>
+            <?php foreach ($datserv as $ds) { ?>
+                <tr>
+                    <td><?= $i++ ?></td>
+                    <td><?= $ds->tgl_transaksi ?></td>
+                    <td><?= $ds->nama_customer ?></td>
+                    <td>Rp. <?= number_format($ds->total_harga) ?></td>
+                    <td>Rp. <?= number_format($ds->jml_bayar) ?></td>
+                    <td>Rp. <?= number_format($ds->kembalian) ?></td>
+                    <td>
+                        <?php if ($ds->status == "Selesai") { ?>
+                            <span>Lunas</span>
+                        <?php } elseif ($ds->status == "Pending") { ?>
+                            <span>Pending</span>
+                        <?php } else { ?>
+                            <span>Perbaikan</span>
+                        <?php } ?>
+                    </td>
+                </tr>
+            <?php } ?>
+        </tbody>
+    </table>
 </body>
 
 </html>

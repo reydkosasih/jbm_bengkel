@@ -52,7 +52,7 @@
                                         <?php if ($mb->status == "Selesai") { ?>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                 <li><a class="dropdown-item" href="<?= site_url('service/detail_service_user/' . $mb->booking_id) ?>"><i class="fas fa-eye"></i> Lihat Data</a></li>
-                                                <li><a class="dropdown-item" href="#"><i class="fas fa-print"></i> Cetak invoice</a></li>
+                                                <li><a class="dropdown-item" href="<?= site_url('transaksi/cetakinv/' . $mb->booking_id) ?>" target="_blank"><i class="fas fa-print"></i> Cetak invoice</a></li>
                                             </ul>
                                         <?php } elseif ($mb->status == "Pending") { ?>
                                             <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
