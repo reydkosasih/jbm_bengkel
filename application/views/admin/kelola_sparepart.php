@@ -1,14 +1,43 @@
 <div class="py-4">
-    <div class="dropdown">
-        <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-plus me-2"></i>Tambah Data
-        </button>
-        <div class="dropdown-menu dashboard-dropdown dropdown-menu-start mt-2 py-1">
-            <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="fas fa-user text-gray-400 me-2" fill="currentColor" viewBox="0 0 20 20">
-                </i>
-                Add User
-            </a>
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+        <i class="fas fa-plus"></i> Tambah Data
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Tambah Data Sparepart</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form action="<?= site_url('sparepart/add_part') ?>" method="post">
+                    <div class="modal-body">
+                        <div class="mb-4">
+                            <label for="">Kode Barang</label>
+                            <input type="text" class="form-control" name="kode_barang" placeholder="Isi Kode Barang">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Nama Barang</label>
+                            <input type="text" class="form-control" name="nama_barang" placeholder="Isi Nama Barang">
+                        </div>
+                        <div class="mb-4">
+                            <label for="">Stok</label>
+                            <input type="number" class="form-control" name="stok" min="0" placeholder="Jumlah Stok">
+                        </div>
+                        <label for="">Harga</label>
+                        <div class="input-group mb-4">
+                            <span class="input-group-text">Rp.</span>
+                            <input type="number" class="form-control" name="harga" min="0" placeholder="Nominal Harga">
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Simpan</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 </div>
@@ -23,27 +52,21 @@
                     <thead class="table-dark">
                         <tr>
                             <th>No</th>
-                            <th>Action</th>
+                            <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Stok</th>
-                            <th>Tipe Part</th>
                             <th>Harga</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php $i = 1 ?>
-                        <?php foreach ($datpart as $dp) { ?>
+                        <?php foreach ($datserv as $ds) { ?>
                             <tr>
                                 <td><?= $i++ ?></td>
-                                <td>
-                                    <a href="#" class="btn btn-secondary">
-                                        <i class="fas fa-edit"></i>
-                                    </a>
-                                </td>
-                                <td><?= $dp->nama_barang ?></td>
-                                <td><?= $dp->stok_barang ?> Pcs</td>
-                                <td><?= $dp->nama_part ?></td>
-                                <td><?= number_format($dp->harga_barang) ?></td>
+                                <td><?= $ds->kode_barang ?></td>
+                                <td><?= $ds->nama_barang ?></td>
+                                <td><?= $ds->stok ?></td>
+                                <td>Rp. <?= number_format($ds->harga) ?></td>
                             </tr>
                         <?php } ?>
                     </tbody>
