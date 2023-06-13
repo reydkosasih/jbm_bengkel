@@ -54,12 +54,12 @@
                             Booking Sekarang!
                         </a>
                     </div>
-                    <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
+                    <!-- <div class="d-flex justify-content-center flex-column mb-6 mb-lg-5">
                         <a href="https://themesberg.com" target="_blank">
                             <img src="<?= base_url('tempset/') ?>assets/img/themesberg.svg" class="d-block mx-auto mb-3" height="25" width="25" alt="Themesberg Logo">
                             <span class="text-muted font-small">A Themesberg production</span>
                         </a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -68,7 +68,7 @@
             </svg></figure>
     </section>
 
-    <section class="section section-lg bg-soft pt-0">
+    <!-- <section class="section section-lg bg-soft pt-0">
 
     </section>
     <section class="section section-sm pt-0">
@@ -85,9 +85,9 @@
     </section>
     <section class="section section-lg bg-white" id="pricing">
 
-    </section>
+    </section> -->
 </main>
-<footer class="footer py-6 bg-gray-800 text-white">
+<!-- <footer class="footer py-6 bg-gray-800 text-white">
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -150,7 +150,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> -->
 
 </body>
 

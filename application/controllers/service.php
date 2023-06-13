@@ -83,6 +83,8 @@ class Service extends CI_Controller
         $total_harga = $this->input->post('total_harga');
         $tgl_transaksi = $this->input->post('tgl_transaksi');
         $status = $this->input->post('status');
+        $jasa = $this->input->post('jasa');
+        $biaya_jasa = $this->input->post('biaya_jasa');
         // $pelanggan = $this->input->post('pelanggan');
 
         foreach ($this->cart->contents() as $items) {
@@ -108,6 +110,8 @@ class Service extends CI_Controller
             'customer_id' => $customer_id,
             'total_harga' => $total_harga,
             'tgl_transaksi' => $tgl_transaksi,
+            'jasa' => $jasa,
+            'biaya_jasa' => $biaya_jasa,
         );
         $this->db->insert('tbl_transaksi', $data);
 
@@ -124,6 +128,17 @@ class Service extends CI_Controller
             'qty'   => $this->input->post('jumlah'),
             'price' => $this->input->post('harga'),
             'name'  => $this->input->post('nabar'),
+        );
+        $this->cart->insert($data);
+        redirect('service/konfirmasi_service/' . $data['booking_id']);
+    }
+
+    public function simpan_cart_jasa()
+    {
+        $data = array(
+            'booking_id' => $this->input->post('booking_id'),
+            'jasa' => $this->input->post('jasa'),
+            'biaya_jasa' => $this->input->post('biaya_jasa'),
         );
         $this->cart->insert($data);
         redirect('service/konfirmasi_service/' . $data['booking_id']);

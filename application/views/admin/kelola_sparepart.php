@@ -52,6 +52,7 @@
                     <thead class="table-dark">
                         <tr>
                             <th>No</th>
+                            <th>Action</th>
                             <th>Kode Barang</th>
                             <th>Nama Barang</th>
                             <th>Stok</th>
@@ -63,6 +64,12 @@
                         <?php foreach ($datserv as $ds) { ?>
                             <tr>
                                 <td><?= $i++ ?></td>
+                                <td>
+                                    <div class="btn-group">
+                                        <a href="<?= site_url('sparepart/delete/' . $ds->id_barang) ?>" class="btn btn-danger"><i class="fas fa-trash"></i></a>
+                                        <a href="<?= site_url('sparepart/edit_form/' . $ds->id_barang) ?>" class="btn btn-secondary"><i class="fas fa-edit"></i></a>
+                                    </div>
+                                </td>
                                 <td><?= $ds->kode_barang ?></td>
                                 <td><?= $ds->nama_barang ?></td>
                                 <td><?= $ds->stok ?></td>

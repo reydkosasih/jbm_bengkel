@@ -1,5 +1,5 @@
 <div class="py-4">
-    <h5>Laporan Transaksi</h5>
+    <h5>Laporan Sparepart</h5>
     <a href="<?= site_url('laporan/cetak_part') ?>" class="btn btn-primary"><i class="fas fa-print"></i> Print</a>
 </div>
 <div class="row">

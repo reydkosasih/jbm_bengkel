@@ -25,7 +25,7 @@
                 <th>Kode Barang</th>
                 <th>Nama Barang</th>
                 <th>Stok</th>
-                <th>Harga</th>
+                <!-- <th>Harga</th> -->
             </tr>
         </thead>
         <tbody>
@@ -35,8 +35,8 @@
                     <td><?= $i++ ?></td>
                     <td><?= $ds->kode_barang ?></td>
                     <td><?= $ds->nama_barang ?></td>
-                    <td style="text-align: center;"><?= $ds->stok ?></td>
-                    <td>Rp. <?= number_format($ds->harga) ?></td>
+                    <td style="text-align: center;"><?= $ds->stok ?> Pcs</td>
+                    <!-- <td>Rp. <?= number_format($ds->harga) ?></td> -->
                 </tr>
             <?php } ?>
         </tbody>

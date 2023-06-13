@@ -70,12 +70,16 @@
                                 <th>No.</th>
                                 <th>Kode Barang</th>
                                 <th>Nama Barang</th>
+                                <!-- <th>Jasa</th> -->
                                 <th>Jumlah</th>
                                 <th>Harga</th>
                                 <th>Subtotal</th>
                                 <th>
                                     <!-- Trigger the modal with a button -->
-                                    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-plus"></i> Tambah</button>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#myModal"><i class="fas fa-cart-plus"></i> Barang</button>
+                                        <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#modalJasa"><i class="fas fa-plus-circle"></i> Jasa</button>
+                                    </div>
                                 </th>
                             </tr>
                             <tr>
@@ -85,6 +89,7 @@
                                     <td><?php echo $no; ?></td>
                                     <td><?php echo $items['id']; ?></td>
                                     <td><?php echo $items['name']; ?></td>
+                                    <!-- <td><?php echo $items['jasa']; ?></td> -->
                                     <td><?php echo $items['qty']; ?></td>
                                     <td>Rp. <?php echo $this->cart->format_number($items['price']); ?></td>
                                     <td>Rp. <?php echo $this->cart->format_number($items['subtotal']); ?></td>
@@ -96,12 +101,12 @@
                                     $no++; ?>
                         <?php endforeach; ?>
                         <tr>
-                            <th colspan="5">Total Harga</th>
-                            <th colspan="2">Rp. <?php echo $this->cart->format_number($this->cart->total()); ?></th>
+                            <th colspan="5">Total Harga + PPn 11%</th>
+                            <th colspan="2">Rp. <?php echo $this->cart->format_number($this->cart->total() + ($this->cart->total() * 11 / 100)); ?></th>
                         </tr>
                         </table>
                         <div class="form-group">
-                            <input type="hidden" name="total_harga" value="<?php echo $this->cart->total() ?>">
+                            <input type="hidden" name="total_harga" value="<?php echo $this->cart->total() + ($this->cart->total() * 11 / 100) ?>">
                             <input type="hidden" name="tgl_transaksi" value="<?php echo date('Y-m-d') ?>">
 
                             <button type="submit" class="btn btn-primary">Simpan</button>
@@ -163,6 +168,35 @@
             </div>
         </form>
 
+    </div>
+</div>
+
+<!-- Modal Jasa -->
+<div class="modal fade" id="modalJasa" tabindex="-1" aria-labelledby="modalJasaLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalJasaLabel">Tambahkan Jasa Servis</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="<?= site_url('service/simpan_cart_jasa') ?>" method="post">
+                <div class="modal-body">
+                    <input type="hidden" name="booking_id" value="<?= $datserv->booking_id ?>">
+                    <div class="mb-4">
+                        <label for="">Jenis Jasa</label>
+                        <input type="text" class="form-control" name="jasa" placeholder="Masukkan Jenis Jasa">
+                    </div>
+                    <div class="mb-4">
+                        <label for="">Biaya Jasa</label>
+                        <input type="number" class="form-control" name="biaya_jasa" placeholder="Masukkan Nominal">
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 

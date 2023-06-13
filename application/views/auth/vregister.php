@@ -35,13 +35,19 @@
                 <?= form_error('nickname', '<small class="text-danger pl-3">', '</small>'); ?>
                 <div class="input-group">
                   <input type="text" name="username" id="username" class="form-control" placeholder="Isi Username" value="<?= set_value('username') ?>" data-toggle="popover" data-placement="left" data-content="Username akan digunakan untuk Login Aplikasi. Simpan informasi Username Anda." autofocus>
-                  <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Isi Nama Depan" value="<?= set_value('nickname') ?>" data-toggle="popover" data-placement="right" data-content="SIlahkan isi dengan Nama Depan Anda">
+                  <input type="text" name="nickname" id="nickname" class="form-control" placeholder="Isi Nama Panggilan" value="<?= set_value('nickname') ?>" data-toggle="popover" data-placement="right" data-content="SIlahkan isi dengan Nama Panggilan Anda">
                 </div>
 
-                <div class="form-group">
+                <div class="input-group">
                   <?= form_error('nama_lengkap', '<small class="text-danger pl-3">', '</small>'); ?>
-                  <label for="nama_lengkap" class="sr-only">Nama Lengkap</label>
+                  <!-- <label for="nama_lengkap" class="sr-only">Nama Lengkap</label> -->
                   <input type="text" name="nama_lengkap" id="nama_lengkap" class="form-control" placeholder="Isi Nama Lengkap" value="<?= set_value('nama_lengkap'); ?>" data-toggle="popover" data-placement="right" data-content="Silahkan isi Nama Lengkap Anda">
+                  <input type="text" name="no_telp" id="no_telp" class="form-control" placeholder="Isi No Telepon" value="<?= set_value('no_telp'); ?>" data-toggle="popover" data-placement="right" data-content="Silahkan isi No Telepon Anda">
+                </div>
+                <div class="form-group">
+                  <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+                  <label for="email" class="sr-only">Email</label>
+                  <input type="email" name="email" id="email" class="form-control" placeholder="Isi Email" value="<?= set_value('email'); ?>" data-toggle="popover" data-placement="right" data-content="Silahkan isi Email Anda">
                 </div>
                 <?= form_error('password1', '<small class="text-danger pl-3">', '</small>'); ?>
                 <div class="input-group">
@@ -54,7 +60,7 @@
                 <button type="submit" class="btn btn-block login-btn mb-4">
                   Register
                 </button>
-                <!-- <p class="login-card-footer-text">Already have an account? <a href="<?= site_url('auth') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Login here</a></p> -->
+                <p class="login-card-footer-text">Already have an account? <a href="<?= site_url('auth') ?>" class="btn btn-block btn-primary" style="font-weight: bold;">Login here</a></p>
               </form>
               <!-- <a href="#!" class="forgot-password-link">Forgot password?</a> -->
               <!-- <nav class="login-card-footer-nav">

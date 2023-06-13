@@ -1,5 +1,5 @@
 <div class="py-4">
-    <div class="dropdown">
+    <!-- <div class="dropdown">
         <button class="btn btn-gray-800 d-inline-flex align-items-center me-2 dropdown-toggle" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <i class="fas fa-plus me-2"></i>Tambah Data
         </button>
@@ -15,7 +15,7 @@
                 Add Widget
             </a>
         </div>
-    </div>
+    </div> -->
 </div>
 <div class="row">
     <div class="col-lg">

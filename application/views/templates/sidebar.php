@@ -25,7 +25,7 @@
         </div>
         <ul class="nav flex-column pt-3 pt-md-0">
             <li class="nav-item">
-                <a href="<?= base_url('tempset/') ?>index.html" class="nav-link d-flex align-items-center">
+                <a href="#" class="nav-link d-flex align-items-center">
                     <span class="sidebar-icon">
                         <i class="fas fa-car fa-2x text-secondary"></i>
                     </span>

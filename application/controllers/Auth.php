@@ -89,6 +89,10 @@ class Auth extends CI_controller
     $this->form_validation->set_rules('username', 'Username', 'required|trim|is_unique[tbl_user.username]', [
       'is_unique' => 'This username has already registered!'
     ]);
+    $this->form_validation->set_rules('email', 'Email', 'required|trim|is_unique[tbl_user.email]', [
+      'is_unique' => 'This email has already registered!'
+    ]);
+    $this->form_validation->set_rules('no_telp', 'no_telp', 'required|trim');
     $this->form_validation->set_rules('password1', 'Password', 'required|trim|min_length[6]|matches[password2]', [
       'matches' => 'Password not match! Please try again.',
       'min_length' => 'Password minimum 6 character.'
@@ -105,15 +109,17 @@ class Auth extends CI_controller
         'nama_lengkap' => htmlspecialchars($this->input->post('nama_lengkap', true)),
         'nickname' => htmlspecialchars($this->input->post('nickname', true)),
         'username' => htmlspecialchars($this->input->post('username', true)),
+        'email' => htmlspecialchars($this->input->post('email', true)),
+        'no_telp' => htmlspecialchars($this->input->post('no_telp', true)),
         'image' => 'default.jpg',
         'password' => password_hash($this->input->post('password1'), PASSWORD_DEFAULT),
         'role_id' => 2,
-        'is_active' => 0,
+        'is_active' => 1,
         'date_created' => time()
       ];
 
       $this->db->insert('tbl_user', $data);
-      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your Account has successfully created! Please confirm administrator to activate. </div>');
+      $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your Account has successfully created!</div>');
       redirect('auth');
     }
   }

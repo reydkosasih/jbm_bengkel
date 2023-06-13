@@ -63,16 +63,20 @@
         </tbody>
         <tfoot class="table-light">
             <tr>
-                <td colspan="4" style="font-weight: bold; text-align: center;">Total Harga</td>
+                <td colspan="4" style="font-weight: bold; text-align: center;">Harga</td>
                 <td>Rp. <?= number_format($totalhrg->total_harga, 2) ?></td>
             </tr>
             <tr>
-                <td colspan="4" style="font-weight: bold; text-align: center;">Jumlah Bayar</td>
-                <td>Rp. <?= number_format($totalhrg->jml_bayar, 2) ?></td>
+                <td colspan="4" style="font-weight: bold; text-align: center;">PPn 11%</td>
+                <td>Rp. <?= number_format($totalhrg->total_harga * 11 / 100) ?></td>
             </tr>
             <tr>
-                <td colspan="4" style="font-weight: bold; text-align: center;">Kembalian</td>
-                <td>Rp. <?= number_format($totalhrg->kembalian, 2) ?></td>
+                <td colspan="4" style="font-weight: bold; text-align: center;">Total Pembayaran</td>
+                <td>Rp. <?= number_format(($totalhrg->total_harga * 11 / 100) + ($totalhrg->total_harga), 2) ?></td>
+            </tr>
+            <tr>
+                <td colspan="4" style="font-weight: bold; text-align: center;">Jumlah Bayar</td>
+                <td>Rp. <?= number_format($totalhrg->jml_bayar, 2) ?> | Kembalian: Rp. <?= number_format($totalhrg->kembalian, 2) ?></td>
             </tr>
         </tfoot>
     </table>
